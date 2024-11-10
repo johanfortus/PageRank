@@ -58,6 +58,8 @@ int main() {
 
     }
 
+    Graph.printGraph();
+
     // DO POWER ITERATIONS HERE
 
     return 0;

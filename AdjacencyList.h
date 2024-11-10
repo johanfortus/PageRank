@@ -20,7 +20,7 @@ class AdjacencyList {
 
 
     // Think about what member variables you need to initialize
-    int pageID;
+
     vector<string> adjacents;
     int totalPages = 0;
 
@@ -29,6 +29,7 @@ public:
     // map<pageId, adjacents<pageId>
     map<int, vector<int>> adjList;
     map<string, int> pageIdOf;
+    map<int, string> pageUrlOf;
     set<string> webPages;
 
     // Think about what helper functions you will need in the algorithm
@@ -36,6 +37,8 @@ public:
     void addPage(string URL);
 
     void setEdge(string webPageOne, string webPageTwo);
+
+    void printGraph();
 
 
     /* prints the PageRank of all pages after p powerIterations in ascending alphabetical order of webpages and
