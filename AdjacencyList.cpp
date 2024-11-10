@@ -16,15 +16,7 @@ void AdjacencyList::setEdge(string webPageOne, string webPageTwo) {
         pageUrlOf[totalPages] = webPageTwo;
     }
 
-    map<int, vector<int>>::iterator iter;
-
     adjList[pageIdOf[webPageOne]].push_back(pageIdOf[webPageTwo]);
-
-
-//    cout << adjList[pageIdOf[webPageOne]].size() << endl;
-//    for(auto i : pageIdOf) {
-//        cout << i.first << " : " << i.second << endl;
-//    }
 }
 
 void AdjacencyList::printGraph() {
@@ -52,73 +44,28 @@ void AdjacencyList::printGraph() {
         }
         cout << "] " << endl;
     }
-
-    cout << "Graph size: " << adjList.size() << endl;
-
 }
 
 void AdjacencyList::PageRank(int n) {
-
     map<int, float> ranking;
     float defaultRank = 1.0 / adjList.size();
-    cout << "Default Rank: " << defaultRank << endl;
-    for(auto i : adjList) {
-//        cout << "Page ID: " << pageId.first << ", Outgoing Links: " << pageId.second.size() << endl;
-
+    for(auto i : adjList)
         ranking[i.first] = defaultRank;
 
-    }
-
-//    for(auto pageId : ranking) {
-//        cout << pageId.first << " : " << pageId.second << endl;
-//    }
-
-
-
-//    for(auto i : newRanking) {
-//        cout << i.first << " : " << i.second << endl;
-//    }
-
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n - 1; i++) {
         map<int, float> newRanking;
-
-        for(auto page : adjList) {
+        for(auto page : adjList)
             newRanking[page.first] = 0;
-        }
-
-
-
 
         for(auto j : adjList) {
-            for(auto outgoingLink : j.second) {
-                cout << "newRanking[" << outgoingLink << "] (" << pageUrlOf[outgoingLink] << ") going to be ";
-                cout << newRanking[outgoingLink] << " + " << ranking[j.first] << " / " << j.second.size() << endl;
+            for(auto outgoingLink : j.second)
                 newRanking[outgoingLink] = newRanking[outgoingLink] + ranking[j.first] / j.second.size();
-                cout << newRanking[outgoingLink] << endl;
-            }
         }
 
-        cout << "Iterating through newRanking: " << endl;
-        for(auto page : newRanking) {
-            cout << page.first << " (" << pageUrlOf[page.first] <<") : " << page.second << endl;
-        }
-
-
-        for(auto page : newRanking) {
+        for(auto page : newRanking)
             ranking[page.first] = page.second;
-        }
-
-        cout << "Iterating ranking: " << endl;
-        for(auto page : ranking) {
-            cout << page.first << " : " << page.second <<endl;
-        }
-
-        cout << endl;
     }
 
-
-
-//    for(auto i : ranking) {
-//        cout << i.first << " : " << i.second << endl;
-//    }
+    for(auto i : ranking)
+        cout << pageUrlOf[i.first] << " : " << i.second << endl;
 }

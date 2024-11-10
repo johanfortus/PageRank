@@ -55,8 +55,6 @@ int main() {
 
     }
 
-    Graph.printGraph();
-
     // DO POWER ITERATIONS HERE
     Graph.PageRank(p);
 
