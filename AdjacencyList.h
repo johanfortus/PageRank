@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <set>
 #include <utility>
 #include <cmath>
 using namespace std;
@@ -27,7 +28,8 @@ public:
 
     // map<pageId, adjacents<pageId>
     map<int, vector<int>> adjList;
-    vector<string> webPages;
+    map<string, int> pageIdOf;
+    set<string> webPages;
 
     // Think about what helper functions you will need in the algorithm
 
