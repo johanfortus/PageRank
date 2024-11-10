@@ -34,10 +34,7 @@ public:
 
     // Think about what helper functions you will need in the algorithm
 
-    void addPage(string URL);
-
     void setEdge(string webPageOne, string webPageTwo);
-
     void printGraph();
 
 

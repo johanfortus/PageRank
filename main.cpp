@@ -39,19 +39,16 @@ int main() {
 
         // read in the source vertex
         string from;
-        cout << "FROM: ";
+
 //        cin >> from;
         from = froms[i];
-        cout << from;
-        cout << endl;
+
 
         // read in the destination vertex
         string to;
-        cout << "TO: ";
+
 //        cin >> to;
         to = tos[i];
-        cout << to;
-        cout << endl;
 
         // ADD VERTICES / EDGE (FROM->TO) TO YOUR ADJACENCY LIST HERE
         Graph.setEdge(from, to);
@@ -61,6 +58,7 @@ int main() {
     Graph.printGraph();
 
     // DO POWER ITERATIONS HERE
+    Graph.PageRank(p);
 
     return 0;
 }
