@@ -37,7 +37,6 @@ public:
     void setEdge(string webPageOne, string webPageTwo);
     void printGraph();
 
-
     /* prints the PageRank of all pages after p powerIterations in ascending alphabetical order of webpages and
     rounding rank to two decimal places */
     void PageRank(int n);
