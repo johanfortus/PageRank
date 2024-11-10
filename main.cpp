@@ -5,6 +5,7 @@
 #include <map>
 #include <algorithm>
 #include <cmath>
+#include "AdjacencyList.h"
 using namespace std;
 
 int main() {
@@ -27,6 +28,7 @@ int main() {
     vector<string> tos = {"gmail.com", "maps.com", "ufl.edu", "google.com", "gmail.com", "facebook.com", "maps.com"};
 
 
+    AdjacencyList Graph;
 
     // for each of the next n lines, read in the vertices from and to
     for(int i = 0; i < n; i++) {
@@ -52,7 +54,7 @@ int main() {
         cout << endl;
 
         // ADD VERTICES / EDGE (FROM->TO) TO YOUR ADJACENCY LIST HERE
-
+        Graph.setEdge(from, to);
 
     }
 
