@@ -43,6 +43,6 @@ void AdjacencyList::PageRank(int n) {
 //        cout << pageUrlOf[i.first] << " : " << i.second << endl;
 
     for(auto i : webPages) {
-        cout << i << " " << ranking[pageIdOf[i]] << endl;
+        cout << i << " " << ranking[pageIdOf[i]] * 100 << endl;
     }
 }
