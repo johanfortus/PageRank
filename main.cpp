@@ -5,6 +5,7 @@
 #include <map>
 #include <algorithm>
 #include <cmath>
+#include <iomanip>
 #include "AdjacencyList.h"
 using namespace std;
 
@@ -54,7 +55,7 @@ int main() {
         Graph.setEdge(from, to);
 
     }
-
+    cout << fixed << setprecision(2);
     // DO POWER ITERATIONS HERE
     Graph.PageRank(p);
 
