@@ -11,28 +11,48 @@ int main() {
 
     // read first number of lines (n) from cin
     int n;
+    cout << "How many lines? ";
     cin >> n;
+    cout << endl;
 
     // read the number of power iterations (p) from cin
     int p;
+    cout << "How many power iterations? ";
     cin >> p;
+    cout << endl;
+
+
+    // Automate test case from canvas
+    vector<string> froms = {"google.com", "google.com", "facebook.com", "ufl.edu", "ufl.edu", "maps.com", "gmail.com"};
+    vector<string> tos = {"gmail.com", "maps.com", "ufl.edu", "google.com", "gmail.com", "facebook.com", "maps.com"};
+
+
 
     // for each of the next n lines, read in the vertices from and to
     for(int i = 0; i < n; i++) {
-        string line;
-        getline(cin, line);
-        istringstream in(line);
+//        string line;
+//        getline(cin, line);
+//        istringstream in(line);
 
 
         // read in the source vertex
         string from;
-        in >> from;
+        cout << "FROM: ";
+//        cin >> from;
+        from = froms[i];
+        cout << from;
+        cout << endl;
 
         // read in the destination vertex
         string to;
-        in >> to;
+        cout << "TO: ";
+//        cin >> to;
+        to = tos[i];
+        cout << to;
+        cout << endl;
 
         // ADD VERTICES / EDGE (FROM->TO) TO YOUR ADJACENCY LIST HERE
+
     }
 
     // DO POWER ITERATIONS HERE
