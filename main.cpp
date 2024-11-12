@@ -26,6 +26,12 @@ int main() {
 //    vector<string> froms = {"google.com", "google.com", "facebook.com", "ufl.edu", "ufl.edu", "maps.com", "gmail.com"};
 //    vector<string> tos = {"gmail.com", "maps.com", "ufl.edu", "google.com", "gmail.com", "facebook.com", "maps.com"};
 
+//    vector<string> froms = {"google.com"};
+//    vector<string> tos = {"gmail.com"};
+
+    vector<string> froms = {"google.com", "google.com", "facebook.com", "ufl.edu", "ufl.edu", "maps.com", "maps.com", "quoa.co", "quora.com", "quora.com", "quora.com"};
+    vector<string> tos = {"gmail.com", "maps.com", "ufl.edu", "google.com", "gmail.com", "facebook.com", "quora.com", "maps.edu", "ufl.com", "facebok.co.in", "quoa.co"};
+
 
     AdjacencyList Graph;
 
@@ -53,9 +59,10 @@ int main() {
         Graph.setEdge(from, to);
 
     }
+//    Graph.printIDs();
 //    cout << fixed << setprecision(2);
     // DO POWER ITERATIONS HERE
+//    Graph.PageRank(p);
     Graph.PageRank(p);
-
     return 0;
 }
