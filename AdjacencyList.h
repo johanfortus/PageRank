@@ -6,6 +6,7 @@
 #include <set>
 #include <utility>
 #include <cmath>
+#include <algorithm>
 #include <iomanip>
 using namespace std;
 
@@ -14,11 +15,7 @@ using namespace std;
 // or
 //pair<string, double> productTwo = {"tomatoes",2.30};
 
-
-
 class AdjacencyList {
-
-
 
     // Think about what member variables you need to initialize
 
