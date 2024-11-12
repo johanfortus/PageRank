@@ -1,19 +1,32 @@
 #include "AdjacencyList.h"
 
 void AdjacencyList::setEdge(string webPageOne, string webPageTwo) {
+    cout << " is " << webPageOne << " in webPages? " << endl;
     if(webPages.find(webPageOne) == webPages.end()) {
+        cout << webPageOne << " is not in webPages" << endl;
         totalPages++;
         webPages.insert(webPageOne);
         pageID[webPageOne] = totalPages;
         pageURL[totalPages] = webPageOne;
+        adjList[webPageOne];
     };
 
+    cout << " is " << webPageTwo << " in webPages? " << endl;
     if(webPages.find(webPageTwo) == webPages.end()) {
+        cout << webPageTwo << " is not in webPages" << endl;
         totalPages++;
         webPages.insert(webPageTwo);
         pageID[webPageTwo] = totalPages;
         pageURL[totalPages] = webPageTwo;
+        adjList[webPageTwo];
     }
+
+//    if(adjList.find(webPageOne) == adjList.end()) {
+//        adjList[webPageOne];
+//    }
+//    if(adjList.find(webPageTwo) == adjList.end()) {
+//        adjList[webPageTwo];
+//    }
     adjList[webPageOne].push_back(webPageTwo);
 }
 
