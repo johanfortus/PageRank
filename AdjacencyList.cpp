@@ -1,9 +1,9 @@
 #include "AdjacencyList.h"
 
 void AdjacencyList::setEdge(string webPageOne, string webPageTwo) {
-//    cout << " is " << webPageOne << " in webPages? " << endl;
+
+    // If webPageOne is not an existing node in the adjacency list
     if(webPages.find(webPageOne) == webPages.end()) {
-//        cout << webPageOne << " is not in webPages" << endl;
         totalPages++;
         webPages.insert(webPageOne);
         pageID[webPageOne] = totalPages;
@@ -11,9 +11,8 @@ void AdjacencyList::setEdge(string webPageOne, string webPageTwo) {
         adjList[webPageOne];
     };
 
-//    cout << " is " << webPageTwo << " in webPages? " << endl;
+    // If webPageTwo is not an existing node in the adjacency list
     if(webPages.find(webPageTwo) == webPages.end()) {
-//        cout << webPageTwo << " is not in webPages" << endl;
         totalPages++;
         webPages.insert(webPageTwo);
         pageID[webPageTwo] = totalPages;
@@ -21,68 +20,39 @@ void AdjacencyList::setEdge(string webPageOne, string webPageTwo) {
         adjList[webPageTwo];
     }
 
-//    if(adjList.find(webPageOne) == adjList.end()) {
-//        adjList[webPageOne];
-//    }
-//    if(adjList.find(webPageTwo) == adjList.end()) {
-//        adjList[webPageTwo];
-//    }
+    // Set webPageTwo as an adjacent to webPageOne
     adjList[webPageOne].push_back(webPageTwo);
 }
 
 void AdjacencyList::PageRank(int n) {
+
+    // Initialize ranking map & default ranks
     map<string, double> Ranking;
     double defaultRank = 1.0 / totalPages;
-//    cout << "Default Rank: " << defaultRank << endl << endl;
-    for(auto page : adjList) {
+    for(auto page : adjList)
         Ranking[page.first] = defaultRank;
-    }
 
+    // Loops (p) power iterations
     for(int i = 0; i < n - 1; i++) {
+
+        // Initialize map containing the modified ranks of the web pages, and setting all to 0
         map<string, double> newRanking;
-        for(auto page : Ranking) {
+        for(auto page : Ranking)
             newRanking[page.first] = 0;
-        }
 
-//        for(auto page : newRanking) {
-//            cout << page.first << " : " << page.second << endl;
-//        }
-
+        // Set the page's new rank or update/accumulate the page's new rank
         for(auto page : adjList) {
-//            cout << page.first << " : " << page.second.size() << " outdegrees" << endl;
-
-            for(auto outdegreeLink : page.second) {
+            for(auto outdegreeLink : page.second)
                 newRanking[outdegreeLink]+=Ranking[page.first] / page.second.size();
-            }
         }
 
-        for(auto page : newRanking) {
-//            cout << page.first << " : " << page.second << endl;
+        // Set Ranking's values to newRanking values
+        for(auto page : newRanking)
             Ranking[page.first] = page.second;
-        }
     }
-    cout << fixed << setprecision(2);
-    for(auto page : Ranking) {
-        cout << page.first << " " << page.second << endl;
-    }
-}
 
-void AdjacencyList::printGraph() {
-    for(auto i : adjList) {
-        cout << i.first << " : [";
-        for(int j = 0; j < i.second.size(); j++) {
-            if(j == i.second.size() - 1) {
-                cout << i.second[j];
-            }
-            else {
-                cout << i.second[j] << ", ";
-            }
-        }
-        cout << "]" << endl;
-    }
-}
-void AdjacencyList::printIDs() {
-    for(auto page : pageID) {
-        cout << page.first << " : " << page.second << endl;
-    }
+    // Print Web Page ranks and round to two decimal places
+    cout << fixed << setprecision(2);
+    for(auto page : Ranking)
+        cout << page.first << " " << page.second << endl;
 }
